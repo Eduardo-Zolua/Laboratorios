@@ -1,0 +1,49 @@
+# Guia de Instalação do Docker e Mutillidae no Kali Linux Rolling
+
+## 🔹 Passo 1: Instalar Docker e Docker Compose
+Execute o comando abaixo para instalar os pacotes necessários:
+```
+sudo apt update && sudo apt install -y docker.io docker-compose
+```
+
+## 🔹 Passo 2: Iniciar e ativar o Docker
+Para iniciar e garantir que o Docker sempre rode na inicialização do sistema:
+```
+sudo systemctl start docker
+sudo systemctl enable docker
+```
+
+Verifique se o Docker está rodando:
+```
+sudo systemctl status docker
+```
+Se aparecer **active (running)**, significa que está funcionando corretamente.
+
+## 🔹 Passo 3: Baixar o projeto Mutillidae
+Clone o repositório do projeto:
+```
+git clone https://github.com/webpwnized/mutillidae-dockerhub.git
+cd mutillidae-dockerhub
+```
+
+## 🔹 Passo 4: Rodar o Mutillidae com Docker Compose
+```
+sudo docker-compose up -d
+```
+Isso iniciará o servidor em segundo plano.
+
+## 🔹 Passo 5: Acessar o Mutillidae no Navegador
+Abra seu navegador e acesse:
+```
+http://localhost:80
+```
+ou
+```
+http://127.0.0.1:80
+```
+
+## 🔹 Passo 6: Verificar se o Container está rodando
+Use o comando:
+```
+sudo docker ps
+

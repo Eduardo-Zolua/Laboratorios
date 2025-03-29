@@ -4,7 +4,7 @@ sudo install -m 0755 -d /etc/apt/keyrings
 curl -fsSL https://download.docker.com/linux/debian/gpg | sudo tee /etc/apt/keyrings/docker.asc > /dev/null
 sudo chmod a+r /etc/apt/keyrings/docker.asc
 echo  " deb [assinado por=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian bookworm estável "  | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-sudo apt atualização
+sudo apt update
 # ----------------------------------------------------------
 
 # CÓDIGO 02

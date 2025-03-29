@@ -1,19 +1,25 @@
-# CÓDIGO 01
-sudo apt update && sudo apt install -y ca-certificates curl gnupg
-sudo install -m 0755 -d /etc/apt/keyrings
-curl -fsSL https://download.docker.com/linux/debian/gpg | sudo tee /etc/apt/keyrings/docker.asc > /dev/null
-sudo chmod a+r /etc/apt/keyrings/docker.asc
-echo  " deb [assinado por=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian bookworm estável "  | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-sudo apt update
-# ----------------------------------------------------------
+#!/bin/bash
 
-# CÓDIGO 02
-sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-# ----------------------------------------------------------
+# Atualizar e instalar Docker + Docker Compose
+echo "🔹 Atualizando pacotes e instalando Docker..."
+sudo apt update && sudo apt install -y docker.io docker-compose
 
-# BAIXAR REPOSITÓRIO
-clone git https://github.com/webpwnized/mutillidae-dockerhub.git
-# ----------------------------------------------------------
+# Iniciar e habilitar Docker
+echo "🔹 Iniciando e ativando o Docker..."
+sudo systemctl start docker
+sudo systemctl enable docker
 
-# RODAR PROJETO
-docker compose up -d
+# Verificar status do Docker
+echo "🔹 Verificando status do Docker..."
+sudo systemctl status docker
+
+# Baixar o repositório Mutillidae
+echo "🔹 Baixando o Mutillidae..."
+git clone https://github.com/webpwnized/mutillidae-dockerhub.git
+cd mutillidae-dockerhub
+
+# Rodar o Mutillidae no Docker
+echo "🔹 Iniciando o Mutillidae..."
+sudo docker-compose up -d
+
+echo "✅ Instalação concluída! Acesse o Mutillidae pelo navegador em: http://localhost:80"
